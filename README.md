@@ -1,7 +1,7 @@
-# seleniumtest
+# herokuapp
 
 Open the project in Visual Studio.  You will need to refresh/restore the Nuget packages in order to successfully compile this project.  To do this:
-In Solution Explorer, right-click  the "seleniumtest" solution and select "Restore Nuget packages"
+In Solution Explorer, right-click  the "herokuapp" solution and select "Restore Nuget packages"
 To run the tests, compile and then run it (F5).
 
 By default this test will run against Chrome.  If you want to use IE, edit the Configuration.cs file and change this:
