@@ -29,7 +29,8 @@ namespace herokuapp
             [Description("JavaScript Alerts")]
             JavaScriptAlerts,
             [Description("WYSIWYG Editor")]
-            WYSIWYGEditor
+            WYSIWYGEditor,
+            NegativeTest
         }
                 
         

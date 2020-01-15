@@ -1,0 +1,6 @@
+{
+  "TestCases": [
+    { "TestCaseName" :  "DropDownTest1", "DropDownOption": "Option 1" },
+    { "TestCaseName" :  "DropDownTest2", "DropDownOption": "Option 2" }
+  ]
+}

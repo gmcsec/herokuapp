@@ -1,5 +1,8 @@
 ﻿using herokuapp.Pages;
 using herokuapp.UserActions;
+using herokuapp.TestCases;
+using herokuapp.Utilities;
+using log4net;
 using OpenQA.Selenium;
 using System;
 using static herokuapp.Enums;
@@ -18,17 +21,19 @@ namespace herokuapp
                 WebDriver = BrowserSession.LaunchBrowser(Configuration.Browser);
                 BrowserSession.MaximizeBrowser(WebDriver);
 
+               //TestCases.DropDownList.TestDropDownList();
+               // test
                 #region Test Case: Click the dropdown link and select the second option
                 // Coded the DropDownList as Static for this example - this was how we coded framework at previous job.  The goal was to make it easy for QAers without coding experience to create test cases.
                 WebDriver.Navigate().GoToUrl(Configuration.HomePageURL);
-                HomePage.ClickLinkText(WebDriver, GetEnumText(HomePageLinks.Dropdown));
-                DropDownList.SelectOption(WebDriver, "Option 2");
-                DropDownList.VerifyOption(WebDriver, "Option 2");
+                HomePage.ClickLinkText(WebDriver, HomePageLinks.Dropdown);
+                Pages.DropDownList.SelectOption(WebDriver, "Option 2");
+                Pages.DropDownList.VerifyOption(WebDriver, "Option 2");
                 #endregion
 
-                #region Test Case Go the Javascript Alerts page and lauch/dismiss the JS Alert
+                #region Test Case Go the Javascript Alerts page and launch/dismiss the JS Alert
                 WebDriver.Navigate().GoToUrl(Configuration.HomePageURL);
-                HomePage.ClickLinkText(WebDriver, GetEnumText(HomePageLinks.JavaScriptAlerts));
+                HomePage.ClickLinkText(WebDriver, HomePageLinks.JavaScriptAlerts);
                 JavaScriptAlerts Alert = new JavaScriptAlerts();
                 Alert.ClickJavascriptButton(WebDriver, JavaScriptAlerts.JSButtons.JSAlert);
                 WebDriver.SwitchTo().Alert().Accept();
@@ -36,7 +41,7 @@ namespace herokuapp
 
                 #region Test Case: Go to the Form Authentication Page, Login and Logout
                 WebDriver.Navigate().GoToUrl(Configuration.HomePageURL);
-                HomePage.ClickLinkText(WebDriver, GetEnumText(HomePageLinks.FormAuthentication));
+                HomePage.ClickLinkText(WebDriver, HomePageLinks.FormAuthentication);
                 FormAuthentication Login = new FormAuthentication();
                 Login.EnterUsername(WebDriver, Configuration.Username);
                 Login.EnterPassword(WebDriver, Configuration.Password);
@@ -47,7 +52,7 @@ namespace herokuapp
 
                 #region Test Case: Go to the WYSIWYG Page, clear out existing text and add new text
                 WebDriver.Navigate().GoToUrl(Configuration.HomePageURL);
-                HomePage.ClickLinkText(WebDriver, GetEnumText(HomePageLinks.WYSIWYGEditor));
+                HomePage.ClickLinkText(WebDriver, HomePageLinks.WYSIWYGEditor);
                 WYSIWYG WYSIWYGFrame = new WYSIWYG();
                 WYSIWYGFrame.AddText(WebDriver, "Add this text to the WYSIWYG Text field.", true);
                 WebDriver.SwitchTo().ParentFrame();
